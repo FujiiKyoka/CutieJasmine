@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電話番号変換ツール</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        input {
+            height: 40px;
+            width: 300px;
+            font-size: 16px;
+            border: 1px solid #dbdbdb;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        button {
+            height: 40px;
+            width: 200px;
+            font-size: 18px;
+            color: white;
+            background-color: #00718d;
+            border: none;
+            border-radius: 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005f73;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #00718d;
+        }
+    </style>
+</head>
+<body>
+    <h1>国際式電話番号変換ツール</h1>
+    <p>電話番号を入力してください（例: 09012345678）</p>
+    <input type="text" id="phoneInput" placeholder="09012345678">
+    <button onclick="convertPhoneNumber()">変換</button>
+    <div id="result"></div>
+
+    <script>
+        function convertPhoneNumber() {
+            let phoneNumber = document.getElementById("phoneInput").value.trim();
+            let resultDiv = document.getElementById("result");
+            
+            // 全角を半角に変換
+            phoneNumber = phoneNumber.replace(/[０-９＋]/g, function (s) {
+                return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
+            });
+            
+            // ハイフン削除
+            phoneNumber = phoneNumber.replace(/-/g, "");
+            
+            // 変換処理
+            if (/^0\d{9,10}$/.test(phoneNumber)) {
+                phoneNumber = "+81" + phoneNumber.slice(1);
+                resultDiv.innerHTML = "変換後の番号: " + phoneNumber;
+            } else {
+                resultDiv.innerHTML = "<span style='color:red;'>正しい電話番号を入力してください。</span>";
+            }
+        }
+    </script>
+</body>
+</html>
