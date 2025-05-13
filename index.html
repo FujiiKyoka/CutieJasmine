@@ -1,73 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>電話番号変換ツール</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            margin: 50px;
-        }
-        input {
-            height: 40px;
-            width: 300px;
-            font-size: 16px;
-            border: 1px solid #dbdbdb;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-            padding: 5px;
-        }
-        button {
-            height: 40px;
-            width: 200px;
-            font-size: 18px;
-            color: white;
-            background-color: #00718d;
-            border: none;
-            border-radius: 20px;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #005f73;
-        }
-        #result {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #00718d;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>私のレシピコレクション</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/script.js"></script>
 </head>
 <body>
-    <h1>国際式電話番号変換ツール</h1>
-    <p>電話番号を入力してください（例: 09012345678）</p>
-    <input type="text" id="phoneInput" placeholder="09012345678">
-    <button onclick="convertPhoneNumber()">変換</button>
-    <div id="result"></div>
+  <header>
+    <h1>あちきの𝓻𝓮𝓬𝓲𝓹𝓮</h1>
+  </header>
 
-    <script>
-        function convertPhoneNumber() {
-            let phoneNumber = document.getElementById("phoneInput").value.trim();
-            let resultDiv = document.getElementById("result");
-            
-            // 全角を半角に変換
-            phoneNumber = phoneNumber.replace(/[０-９＋]/g, function (s) {
-                return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
-            });
-            
-            // ハイフン削除
-            phoneNumber = phoneNumber.replace(/-/g, "");
-            
-            // 変換処理
-            if (/^0\d{9,10}$/.test(phoneNumber)) {
-                phoneNumber = "+81" + phoneNumber.slice(1);
-                resultDiv.innerHTML = "変換後の番号: " + phoneNumber;
-            } else {
-                resultDiv.innerHTML = "<span style='color:red;'>正しい電話番号を入力してください。</span>";
-            }
-        }
-    </script>
+  <div class="container">
+    <!-- サイドバー -->
+    <aside class="sidebar">
+      <nav class="tags-list">
+        <button class="tag-button" data-tag="ALL">ALL</button>
+        <button class="tag-button" data-tag="和食">和食</button>
+        <button class="tag-button" data-tag="洋食">洋食</button>
+        <button class="tag-button" data-tag="中華">中華</button>
+        <button class="tag-button" data-tag="筋肉">筋肉</button>
+        <button class="tag-button" data-tag="ヘルシー">ヘルシー</button>
+        <button class="tag-button" data-tag="肉系">肉系</button>
+        <button class="tag-button" data-tag="魚系">魚系</button>
+        <button class="tag-button" data-tag="麺類">麺類</button>
+        <button class="tag-button" data-tag="副菜">副菜</button>
+        <button class="tag-button" data-tag="スープ">スープ</button>
+        <button class="tag-button" data-tag="スイーツ">スイーツ</button>
+        <button class="tag-button" data-tag="米粉">米粉</button>
+      </nav>
+    </aside>
+
+    <!-- レシピ一覧 -->
+    <main class="content">
+      <section id="recipe-list">
+        <div class="recipe-card" data-tags="和食,ヘルシー,米粉,肉系,筋肉">
+          <a href="recipe/recipe1.html">
+            <div class="title">鶏むね豆腐ハンバーグ</div>
+          </a>
+        </div>
+        <div class="recipe-card" data-tags=",ヘルシー,米粉,スイーツ,筋肉">
+          <a href="recipe/recipe2.html">
+            <div class="title">２</div>
+          </a>
+        </div>
+        <div class="recipe-card" data-tags="魚系,ヘルシー,筋肉">
+          <a href="recipe/recipe3.html">
+            <div class="title">３</div>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
