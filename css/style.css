@@ -1,0 +1,205 @@
+/* 全体 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff0f6; /* ほんのりピンク */
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* ヘッダー */
+header {
+  background-color: #ffccd5;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 3px solid #ff99aa;
+}
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #d6336c;
+}
+
+/* ２カラムレイアウト */
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  min-height: calc(100vh - 100px); /* ヘッダーを除いた高さ */
+}
+
+/* サイドバー */
+.sidebar {
+  width: 160px;            /* お好みで調整 */
+  background-color: #ffe3e6;
+  border-right: 3px solid #ff99aa;
+  padding: 20px 10px;
+  box-sizing: border-box;
+}
+
+/* タグボタン（縦並び） */
+.tags-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.tag-button {
+  margin: 5px 0;           /* 上下のマージン */
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ff85c0;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s;
+}
+.tag-button:hover,
+.tag-button.active {
+  background-color: #ff5c8a;
+}
+
+/* メインコンテンツ */
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff0f6;
+  box-sizing: border-box;
+}
+
+/* レシピ一覧（index.html 用） */
+#recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* 左寄せ */
+  padding: 20px 0;
+}
+.recipe-card {
+  width: 200px;
+  margin: 10px;
+  background-color: #fff;
+  border: 2px solid #ff99aa;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s;
+  position: relative;
+}
+.recipe-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.recipe-card .title {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #d6336c;
+}
+.recipe-card:hover {
+  transform: translateY(-5px);
+  border-color: #ff5c8a;
+}
+/* ③ ホバー時にタイトルの文字色だけ変える */
+.recipe-card:hover .title {
+  color: #ff5c8a;
+}
+
+/* レシピ詳細ページ（recipeX.html）用スタイル */
+/* どこからアクセスしても幅100%、中央寄せ */
+
+/* 戻るボタン */
+.back-button {
+  display: inline-block;
+  margin: 20px;
+  padding: 8px 12px;
+  background-color: #ff85c0;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+.back-button:hover {
+  background-color: #ff5c8a;
+}
+
+/* レシピ全体ラッパー */
+.recipe-detail {
+  width: 90%;             /* スマホでもPCでも幅 90% */
+  max-width: 800px;       /* 最大幅 800px */
+  margin: 0 auto 40px;    /* 上下余白＋中央寄せ */
+  padding: 20px;
+  background-color: #ffffff;
+  border: 3px dashed #ff99aa;  /* 点線枠 */
+  border-radius: 15px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+/* タイトル */
+.recipe-detail h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #d6336c;
+  margin-bottom: 20px;
+}
+
+/* 画像 */
+.recipe-detail img {
+  display: block;
+  width: 80%;
+  height: auto;
+  max-width: 80%;      /* 枠内で収まる */
+  border-radius: 10px;
+  margin: 0 auto 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 材料・作り方セクション */
+.recipe-detail section {
+  background-color: #ffe3e6;    /* やさしいピンク背景 */
+  border: 2px solid #ff99aa;    /* 太めのピンク枠 */
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+.recipe-detail section h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: #d6336c;
+  position: relative;
+}
+
+/* リスト（材料）と手順（作り方） */
+.recipe-detail ul,
+.recipe-detail ol {
+  margin: 10px 0 0 20px;
+  padding: 0;
+}
+.recipe-detail li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* レスポンシブ対応：小さな画面ではパディングを少し減らす */
+@media screen and (max-width: 480px) {
+  .sidebar {
+    display: none;  /* index.html のサイドバーは見えないように */
+  }
+  .container {
+    flex-direction: column;
+  }
+  .content {
+    padding: 10px;
+  }
+  .recipe-detail {
+    width: 100%;
+    padding: 15px;
+  }
+  .recipe-detail section {
+    padding: 12px 15px;
+  }
+}
