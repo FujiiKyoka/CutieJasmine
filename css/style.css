@@ -71,9 +71,10 @@ header h1 {
 /* レシピ一覧（index.html 用） */
 #recipe-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* 左寄せ */
-  padding: 20px 0;
+  flex-direction: column;  /* 縦方向に並べる */
+  align-items: center;     /* 中央寄せ */
+  gap: 20px;               /* 各カードの間隔 */
+  padding: 20px;
 }
 .recipe-card {
   width: 200px;
