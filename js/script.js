@@ -25,3 +25,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const allBtn = document.querySelector('.tag-button[data-tag="ALL"]');
   if (allBtn) allBtn.click();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.getElementById("toggleButton1");
+  const checklist = document.getElementById("checklist1");
+
+  toggleButton.addEventListener("click", () => {
+    const isVisible = checklist.style.display === "block";
+    checklist.style.display = isVisible ? "none" : "block";
+    toggleButton.textContent = isVisible ? "2日目プラン 🙈" : "2日目プラン 🙉";
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.getElementById("toggleButton2");
+  const checklist = document.getElementById("checklist2");
+
+  toggleButton.addEventListener("click", () => {
+    const isVisible = checklist.style.display === "block";
+    checklist.style.display = isVisible ? "none" : "block";
+    toggleButton.textContent = isVisible ? "持ち物 🙈" : "持ち物 🙉";
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.getElementById("toggleButton3");
+  const checklist = document.getElementById("checklist3");
+
+  toggleButton.addEventListener("click", () => {
+    const isVisible = checklist.style.display === "block";
+    checklist.style.display = isVisible ? "none" : "block";
+    toggleButton.textContent = isVisible ? "買う物 🙈" : "買う物 🙉";
+  });
+});
+
+
+
