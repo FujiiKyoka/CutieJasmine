@@ -221,14 +221,16 @@ header h1 {
 }
 
 .plan {
-  font-size: 1.2em;
+  font-size: 1em;
   color: #ff84ff;
+  background: linear-gradient(to right, #6b8e23,#2e8b57);
   background-color: #6b8e23;
   font-family: 'Zen Maru Gothic', sans-serif;
   font-weight: bold;
-  width: auto;
+  width: 210px;              /* ←ここで横幅固定！ */
   text-align: center;        /* 中の文字を中央寄せ */
-  padding: 8px 0;            /* 上下の余白だけ（左右は固定幅だから不要） */
+  padding: 6px ;            /* 上下の余白だけ（左右は固定幅だから不要） */
   border-radius: 16px;
   display: inline-block;
 }
+
